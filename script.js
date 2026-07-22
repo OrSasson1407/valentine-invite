@@ -105,7 +105,17 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   function moveNoButtonToRandomPosition() {
-    // Switch to fixed positioning so it can roam the whole viewport
+    // IMPORTANT: .card uses backdrop-filter, which (like `transform`) creates
+    // a new containing block for `position: fixed` descendants in most
+    // browsers. If we leave the button inside .card, "fixed" ends up being
+    // relative to the CARD instead of the real viewport — so coordinates
+    // calculated from window.innerWidth/innerHeight send it flying way
+    // outside the visible page. Fix: move it to <body> once, first time
+    // it needs to escape, so it's a direct child of the real viewport.
+    if (noBtn.parentElement !== document.body) {
+      document.body.appendChild(noBtn);
+    }
+
     if (!noBtn.classList.contains('escaping')) {
       noBtn.classList.add('escaping');
     }
