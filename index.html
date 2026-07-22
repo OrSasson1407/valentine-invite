@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הזמנה מיוחדת ❤️</title>
+    <!-- פונט עברי נקי וקריא -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- מיכל ללבבות המרחפים ברקע -->
+    <div id="hearts-background"></div>
+
+    <!-- הכרטיס המרכזי -->
+    <div class="card" id="main-card">
+        
+        <!-- שלב 1: מסך ההזמנה -->
+        <div id="invitation-step">
+            <h1 class="title">❤️ הזמנה מיוחדת ❤️</h1>
+            <p class="subtitle">את מוזמנת לדייט ביום האהבה</p>
+            
+            <div class="details-box">
+                <p>📅 <strong>תאריך:</strong> 29/7</p>
+                <p>🕗 <strong>שעה:</strong> 20:00</p>
+            </div>
+            
+            <div class="buttons-container">
+                <button id="btn-yes" class="btn btn-yes">מאשרת הגעה ❤️</button>
+                <button id="btn-no" class="btn btn-no">לא יכולה 😢</button>
+            </div>
+        </div>
+
+        <!-- שלב 2: מסך ההצלחה (מוסתר בהתחלה) -->
+        <div id="success-step" class="hidden">
+            <h1 class="title success-title">🎉 ידעתי שתסכימי ❤️</h1>
+            <p class="subtitle">מחכה כבר לדייט שלנו 😍</p>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
