@@ -1,44 +1,82 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>הזמנה מיוחדת ❤️</title>
-    <!-- פונט עברי נקי וקריא -->
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הזמנה מיוחדת ❤️</title>
+
+  <!-- Google Font: Heebo works great for Hebrew, Assistant is a nice alternative -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- מיכל ללבבות המרחפים ברקע -->
-    <div id="hearts-background"></div>
 
-    <!-- הכרטיס המרכזי -->
-    <div class="card" id="main-card">
-        
-        <!-- שלב 1: מסך ההזמנה -->
-        <div id="invitation-step">
-            <h1 class="title">❤️ הזמנה מיוחדת ❤️</h1>
-            <p class="subtitle">את מוזמנת לדייט ביום האהבה</p>
-            
-            <div class="details-box">
-                <p>📅 <strong>תאריך:</strong> 29/7</p>
-                <p>🕗 <strong>שעה:</strong> 20:00</p>
-            </div>
-            
-            <div class="buttons-container">
-                <button id="btn-yes" class="btn btn-yes">מאשרת הגעה ❤️</button>
-                <button id="btn-no" class="btn btn-no">לא יכולה 😢</button>
-            </div>
+  <!-- Floating hearts live in the background, behind everything -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <!-- Confetti canvas, only used after she says yes -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <main class="stage">
+
+    <!-- ============ INVITATION CARD ============ -->
+    <section class="card" id="invitationCard">
+      <div class="card-glow"></div>
+
+      <h1 class="title">
+        <span class="heart-icon">❤️</span>
+        הזמנה מיוחדת
+        <span class="heart-icon">❤️</span>
+      </h1>
+
+      <p class="subtitle">את מוזמנת לדייט ביום האהבה</p>
+
+      <div class="details">
+        <div class="detail-row">
+          <span class="detail-icon">📅</span>
+          <span class="detail-text">תאריך: 29/7</span>
         </div>
-
-        <!-- שלב 2: מסך ההצלחה (מוסתר בהתחלה) -->
-        <div id="success-step" class="hidden">
-            <h1 class="title success-title">🎉 ידעתי שתסכימי ❤️</h1>
-            <p class="subtitle">מחכה כבר לדייט שלנו 😍</p>
+        <div class="detail-row">
+          <span class="detail-icon">🕗</span>
+          <span class="detail-text">שעה: 20:00</span>
         </div>
-        
-    </div>
+      </div>
 
-    <script src="script.js"></script>
+      <!-- Optional countdown until the date -->
+      <div class="countdown" id="countdown">
+        <span id="countdownText">טוען ספירה לאחור...</span>
+      </div>
+
+      <div class="buttons-area" id="buttonsArea">
+        <button class="btn btn-yes" id="yesBtn">מאשרת הגעה ❤️</button>
+        <!-- The "no" button is absolutely positioned once JS takes over,
+             so it can run away from the cursor/tap -->
+        <button class="btn btn-no" id="noBtn">לא יכולה 😢</button>
+      </div>
+
+      <p class="hint" id="hint">💡 נסי ללחוץ על הכפתור השני...</p>
+    </section>
+
+    <!-- ============ SUCCESS SCREEN ============ -->
+    <section class="card success-card" id="successCard" hidden>
+      <div class="card-glow success-glow"></div>
+      <div class="big-emoji">🎉</div>
+      <h1 class="title success-title">ידעתי שתסכימי ❤️</h1>
+      <p class="subtitle">מחכה כבר לדייט שלנו 😍</p>
+      <div class="success-details">
+        <div class="detail-row">
+          <span class="detail-icon">📅</span>
+          <span class="detail-text">29/7 בשעה 20:00</span>
+        </div>
+      </div>
+      <div class="success-hearts">💖 💗 💕 💓 💞</div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
